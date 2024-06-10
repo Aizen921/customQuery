@@ -4,7 +4,7 @@ import com.customQuery.customQuery.enums.StatusEnum;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "flights")
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

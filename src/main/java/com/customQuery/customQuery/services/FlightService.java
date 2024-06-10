@@ -16,14 +16,16 @@ public class FlightService {
     @Autowired
     private FlightDAO flightDAO;
 
-    public Flight createFlight() {
-        Flight newFlight = new Flight();
-        newFlight.setDescription("Andata e Ritorno");
-        newFlight.setFromAirport(generateRandomString());
-        newFlight.setToAirport(generateRandomString());
-        newFlight.setStatusEnum(StatusEnum.ONTIME);
-        Flight fligtCreted = flightDAO.save(newFlight);
-        return fligtCreted;
+    public List<Flight> createFlights() {
+        for(int i = 0; i<50; i++) {
+            Flight newFlight = new Flight();
+            newFlight.setDescription("Andata e Ritorno");
+            newFlight.setFromAirport(generateRandomString());
+            newFlight.setToAirport(generateRandomString());
+            newFlight.setStatusEnum(StatusEnum.ONTIME);
+           flightDAO.save(newFlight);
+        }
+        return flightDAO.findAll();
     }
 
     public String generateRandomString() {

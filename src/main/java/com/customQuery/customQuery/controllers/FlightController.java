@@ -18,9 +18,9 @@ public class FlightController {
     @Autowired
     private FlightService flightService;
     @PostMapping("/")
-    public ResponseEntity<Flight> addFlight(){
-        Flight newFlight = flightService.createFlight();
-        return ResponseEntity.status(HttpStatus.CREATED).body(newFlight);
+    public ResponseEntity<List<Flight>> addFlight(){
+        List<Flight> newFlights = flightService.createFlights();
+        return ResponseEntity.status(HttpStatus.CREATED).body(newFlights);
     }
     @GetMapping("/list")
     public List<Flight> getAllFlight(){
